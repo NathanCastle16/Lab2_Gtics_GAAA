@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Equipos</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+
+<body>
+
+<div class="contenedor">
+    <div class="tarjeta listado">
+
+        <h1>Listado de Equipos Registrados</h1>
+
+        <form class="buscador"
+              method="get"
+              th:action="@{/equipos/buscar}">
+
+            <input
+                    type="text"
+                    name="codigoActivo"
+                    placeholder="Buscar por código de activo..."
+                    th:value="${codigoBuscado}"
+                    required>
+
+            <button type="submit">Buscar</button>
+        </form>
+
+        <div class="mensaje ok"
+             th:if="${mensaje != null}"
+             th:text="${mensaje}">
+        </div>
+
+        <div class="mensaje error"
+             th:if="${error != null}"
+             th:text="${error}">
+        </div>
+
+        <p class="vacio"
+           th:if="${equipos.isEmpty()}">
+            No hay equipos registrados.
+        </p>
+
+        <table th:if="${!equipos.isEmpty()}">
+            <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Código Activo</th>
+                <th>Fecha Adquisición</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="equipo : ${equipos}">
+                <td th:text="${equipo.nombre}"></td>
+                <td th:text="${equipo.tipo}"></td>
+
+                <td>
+                    <a th:href="@{/equipos/{codigo}(codigo=${equipo.codigoActivo})}"
+                       th:text="${equipo.codigoActivo}">
+                    </a>
+                </td>
+
+                <td th:text="${equipo.fechaAdquisicion}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="enlaces">
+            <a th:href="@{/equipos}">Mostrar todos</a>
+            <a th:href="@{/registro}">Registrar nuevo equipo</a>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
