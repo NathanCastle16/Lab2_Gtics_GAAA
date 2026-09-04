@@ -1,0 +1,12 @@
+Ramas solicitadas:
+main (vacía)
+develop
+feature/entity
+feature/list
+feature/search
+feature/register
+feature/edit
+
+Secuencia:
+develop -> feature/entity -> feature/list -> feature/search -> feature/register -> feature/edit
+Finalmente merge feature/edit -> develop

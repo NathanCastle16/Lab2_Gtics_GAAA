@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Detalle</title><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"></head>
+<body><div class="container py-4"><h1 class="mb-4">Detalle del empleado</h1>
+<table class="table table-bordered">
+<tr><th>ID</th><td th:text="${employee.employeeId}"></td></tr>
+<tr><th>Nombre</th><td th:text="${employee.firstName}"></td></tr>
+<tr><th>Apellido</th><td th:text="${employee.lastName}"></td></tr>
+<tr><th>Correo</th><td th:text="${employee.email}"></td></tr>
+<tr><th>Teléfono</th><td th:text="${employee.phoneNumber}"></td></tr>
+<tr><th>Fecha de contratación</th><td th:text="${employee.hireDate}"></td></tr>
+<tr><th>Puesto</th><td th:text="${employee.jobId}"></td></tr>
+<tr><th>Salario</th><td th:text="${employee.salary}"></td></tr>
+<tr><th>Comisión</th><td th:text="${employee.commissionPct}"></td></tr>
+<tr><th>Manager ID</th><td th:text="${employee.managerId}"></td></tr>
+<tr><th>Department ID</th><td th:text="${employee.departmentId}"></td></tr>
+</table><a class="btn btn-secondary" th:href="@{/employees}">Volver</a></div></body></html>
