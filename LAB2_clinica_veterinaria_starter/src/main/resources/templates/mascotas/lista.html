@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mascotas</title>
+</head>
+<body>
+<h1>Listado de mascotas</h1>
+
+<p>
+    <a th:href="@{/mascotas/nuevo}">Nueva mascota</a> |
+    <a th:href="@{/mascotas/reporte}">Reporte</a>
+</p>
+
+<form method="get" th:action="@{/mascotas/buscar}">
+    <input type="text" name="valor" placeholder="Ingrese búsqueda" required>
+    <select name="criterio">
+        <option value="nombre">Nombre</option>
+        <option value="especie">Especie</option>
+        <option value="estado">Estado</option>
+    </select>
+    <button type="submit">Buscar</button>
+    <a th:href="@{/mascotas}">Limpiar</a>
+</form>
+
+<table border="1" cellpadding="6">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Especie</th>
+        <th>Raza</th>
+        <th>Edad</th>
+        <th>Nombre del dueño</th>
+        <th>Teléfono</th>
+        <th>Estado</th>
+        <th>Edición</th>
+        <th>Eliminación</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="mascota : ${listaMascotas}">
+        <td th:text="${mascota.id}"></td>
+        <td th:text="${mascota.nombre}"></td>
+        <td th:text="${mascota.especie}"></td>
+        <td th:text="${mascota.raza}"></td>
+        <td th:text="${mascota.edad}"></td>
+        <td th:text="${mascota.nombreDueno}"></td>
+        <td th:text="${mascota.telefono}"></td>
+        <td th:text="${mascota.estado ? 'Activo' : 'Inactivo'}"></td>
+        <td><a th:href="@{/mascotas/editar(id=${mascota.id})}">Editar</a></td>
+        <td><a th:href="@{/mascotas/borrar(id=${mascota.id})}">Eliminar</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

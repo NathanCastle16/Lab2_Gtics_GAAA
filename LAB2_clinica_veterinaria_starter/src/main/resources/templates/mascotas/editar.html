@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar mascota</title>
+</head>
+<body>
+<h1>Editar mascota</h1>
+<!-- TODO P5: cambia esta acción al endpoint POST que implemente tu @Query personalizada. -->
+<form method="post" th:action="@{/mascotas/actualizar}">
+    <input type="hidden" name="id" th:value="${mascota.id}">
+    <p>Nombre: <input type="text" name="nombre" th:value="${mascota.nombre}"></p>
+    <p>Especie: <input type="text" name="especie" th:value="${mascota.especie}"></p>
+    <p>Raza: <input type="text" name="raza" th:value="${mascota.raza}"></p>
+    <p>Edad: <input type="number" name="edad" th:value="${mascota.edad}"></p>
+    <p>Nombre del dueño: <input type="text" name="nombreDueno" th:value="${mascota.nombreDueno}"></p>
+    <p>Teléfono: <input type="text" name="telefono" th:value="${mascota.telefono}"></p>
+    <p>Estado:
+        <select name="estado">
+            <option value="true" th:selected="${mascota.estado}">Activo</option>
+            <option value="false" th:selected="${!mascota.estado}">Inactivo</option>
+        </select>
+    </p>
+    <button type="submit">Actualizar</button>
+    <a th:href="@{/mascotas}">Cancelar</a>
+</form>
+</body>
+</html>
